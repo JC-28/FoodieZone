@@ -1,0 +1,29 @@
+{% extends "layout1.html" %}
+{% block title %}Edit List {% endblock %}
+
+
+{% block link%}
+    <ul id="nav-mobile" class="right">
+        <li><a href="/app">Cancel</a></li>
+    </ul>
+{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+      <main class="container">
+        <p style="font-size:30px; font-family:" class="text">Edit item in list</p>
+        <div class="card" >
+          <div class="card-content">
+            <span class="card-title">Edit item</span>
+            <form name="addForm" method="POST" action="/editList/{{id}}">
+              <div class="input-field">
+                <input type="text" name="text" placeholder="Enter updated item" class="materialize-textarea"></textarea>
+                <label for="text">Enter item text</label>
+              </div>
+              <input class="btn green white-text" type="submit" value="Update" />
+            </form>
+          </div>
+        </div>
+    </main>
+{% endblock %}
