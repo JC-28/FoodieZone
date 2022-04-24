@@ -1,4 +1,4 @@
-import json, requests
+import json, requests, os
 from flask_login import LoginManager, current_user, login_user, login_required
 
 from flask import Flask, request, render_template, redirect, flash, url_for
@@ -21,7 +21,7 @@ def load_user(user_id):
 
 def create_app():
   app = Flask(__name__)
-  app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+  app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
   app.config['SECRET_KEY'] = "MYSECRET"
   app.config['TEMPLATES_AUTO_RELOAD'] = True
   login_manager.init_app(app)
